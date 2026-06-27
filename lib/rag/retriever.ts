@@ -1,5 +1,7 @@
 import { embedText } from "@/lib/ingest/embed";
 import { readSnapshot } from "@/lib/ingest/snapshot";
+import { getDb, isFirebaseConfigured } from "@/lib/firebase";
+import type { KBChunk } from "@/lib/types";
 
 export interface RetrievedChunk {
   id: string;
@@ -15,8 +17,10 @@ export interface RetrievalResult {
 
 /**
  * The Retriever contract (Architect #1 / ADR seam). At pilot scale (20-30
- * chunks) there is no in-memory cosine over kb_chunk rows — no vector
- * index, no migration, no recall tuning. A future pgvector- or
+ * chunks) in-memory cosine over kb_chunk rows is plenty — no vector index,
+ * no migration, no recall tuning. The corpus is loaded from Firestore when
+ * configured (serverless deployments have no local filesystem snapshot) or
+ * the local `.data/kb-snapshot.json` for offline dev. A future pgvector- or
  * Pinecone/Qdrant-backed implementation only needs to satisfy this same
  * interface; nothing above this layer changes.
  */
@@ -38,15 +42,39 @@ function cosineSimilarity(a: number[], b: number[]): number {
   return denom === 0 ? 0 : dot / denom;
 }
 
+// Per-warm-instance cache. Serverless deployments have no local
+// .data/kb-snapshot.json (it's gitignored and never ships in the bundle) —
+// Firestore is the corpus of record there. Caching avoids a Firestore read
+// per request; it goes stale only when a serverless instance stays warm
+// across a KB republish, which is an acceptable pilot-scale tradeoff
+// (re-deploying or a cold start picks up the change).
+let firestoreChunkCache: KBChunk[] | null = null;
+
+async function loadCorpus(): Promise<KBChunk[]> {
+  if (isFirebaseConfigured()) {
+    if (firestoreChunkCache) return firestoreChunkCache;
+    const db = getDb();
+    const snapshot = await db.collection("kb_chunks").get();
+    firestoreChunkCache = snapshot.docs.map((doc) => {
+      const data = doc.data() as Omit<KBChunk, "id">;
+      return { id: doc.id, ...data };
+    });
+    return firestoreChunkCache;
+  }
+
+  const localSnapshot = await readSnapshot();
+  return localSnapshot.chunks;
+}
+
 export class InMemoryCosineRetriever implements Retriever {
   async retrieve(query: string, topK = 3): Promise<RetrievalResult> {
-    const snapshot = await readSnapshot();
-    if (snapshot.chunks.length === 0) {
+    const corpus = await loadCorpus();
+    if (corpus.length === 0) {
       return { chunks: [], topScore: 0 };
     }
 
     const queryEmbedding = await embedText(query);
-    const scored = snapshot.chunks
+    const scored = corpus
       .map((chunk) => ({
         id: chunk.id,
         content: chunk.content,
