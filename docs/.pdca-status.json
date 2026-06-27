@@ -1,0 +1,603 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-06-27T12:25:02.437Z",
+  "activeFeatures": [
+    "b2b-chat-bot",
+    "ingest",
+    "scripts",
+    "rag",
+    "chat",
+    "escalation",
+    "escalate",
+    "resolve",
+    "escalations",
+    "auth",
+    "widget",
+    "public",
+    "portal",
+    "context",
+    "metrics"
+  ],
+  "primaryFeature": "b2b-chat-bot",
+  "features": {
+    "b2b-chat-bot": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:12:04.824Z",
+        "lastUpdated": "2026-06-27T12:14:45.459Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/i18n.ts"
+    },
+    "ingest": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:15:41.223Z",
+        "lastUpdated": "2026-06-27T06:32:02.789Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/ingest/snapshot.ts"
+    },
+    "scripts": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:16:29.446Z",
+        "lastUpdated": "2026-06-27T06:29:18.226Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/scripts/ingest.ts"
+    },
+    "rag": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:16:53.975Z",
+        "lastUpdated": "2026-06-27T12:25:02.436Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/rag/answer.ts"
+    },
+    "chat": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:17:52.702Z",
+        "lastUpdated": "2026-06-27T12:15:50.843Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/api/chat/route.ts"
+    },
+    "escalation": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:19:30.699Z",
+        "lastUpdated": "2026-06-27T11:56:06.082Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/escalation/notify.ts"
+    },
+    "escalate": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:19:37.994Z",
+        "lastUpdated": "2026-06-27T06:30:34.133Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/api/escalate/route.ts"
+    },
+    "resolve": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:19:51.941Z",
+        "lastUpdated": "2026-06-27T06:30:45.110Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/api/escalate/resolve/route.ts"
+    },
+    "escalations": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:20:02.952Z",
+        "lastUpdated": "2026-06-27T06:30:56.358Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/staff/escalations/page.tsx"
+    },
+    "auth": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:20:10.570Z",
+        "lastUpdated": "2026-06-27T06:32:20.479Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/auth/getAgencyContext.ts"
+    },
+    "widget": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:20:22.133Z",
+        "lastUpdated": "2026-06-27T12:16:17.149Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/widget/widget-chat.tsx"
+    },
+    "public": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:20:29.589Z",
+        "lastUpdated": "2026-06-27T06:20:29.589Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/public/embed.js"
+    },
+    "portal": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:20:37.288Z",
+        "lastUpdated": "2026-06-27T06:20:37.288Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/portal/page.tsx"
+    },
+    "context": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:20:45.417Z",
+        "lastUpdated": "2026-06-27T06:20:45.417Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/api/auth/context/route.ts"
+    },
+    "metrics": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-06-27T06:22:10.086Z",
+        "lastUpdated": "2026-06-27T06:31:27.009Z"
+      },
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/admin/metrics/page.tsx"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-06-27T05:40:00.010Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-06-27T12:25:02.437Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-06-27T06:12:04.824Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:12:19.324Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:12:33.215Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:12:38.933Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:12:46.649Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:12:52.009Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:12:59.746Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:15:41.223Z",
+      "feature": "ingest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:15:47.583Z",
+      "feature": "ingest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:15:59.087Z",
+      "feature": "ingest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:16:07.721Z",
+      "feature": "ingest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:16:15.889Z",
+      "feature": "ingest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:16:29.446Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:16:53.975Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:17:03.869Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:17:19.547Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:17:32.935Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:17:45.320Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:17:52.702Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:18:51.774Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:19:30.699Z",
+      "feature": "escalation",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:19:37.994Z",
+      "feature": "escalate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:19:51.941Z",
+      "feature": "resolve",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:02.952Z",
+      "feature": "escalations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:10.570Z",
+      "feature": "auth",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:22.133Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:29.589Z",
+      "feature": "public",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:37.288Z",
+      "feature": "portal",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:45.417Z",
+      "feature": "context",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:54.452Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:20:59.731Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:21:23.231Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:21:28.389Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:21:33.837Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:22:10.086Z",
+      "feature": "metrics",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:28:57.806Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:29:06.171Z",
+      "feature": "ingest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:29:11.408Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:29:18.226Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:29:23.950Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:29:32.608Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:29:49.683Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:30:01.177Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:30:10.993Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:30:17.714Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:30:26.753Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:30:34.133Z",
+      "feature": "escalate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:30:45.110Z",
+      "feature": "resolve",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:30:56.358Z",
+      "feature": "escalations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:31:16.111Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:31:27.009Z",
+      "feature": "metrics",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:32:02.789Z",
+      "feature": "ingest",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:32:14.837Z",
+      "feature": "auth",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T06:32:20.479Z",
+      "feature": "auth",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T11:56:06.082Z",
+      "feature": "escalation",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T12:14:45.459Z",
+      "feature": "b2b-chat-bot",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T12:15:08.051Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T12:15:22.324Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T12:15:38.458Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T12:15:50.843Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T12:16:17.149Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T12:25:02.436Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}
