@@ -1,6 +1,12 @@
 import { getDb, isFirebaseConfigured } from "@/lib/firebase";
 import EscalationItem, { type EscalationItemData } from "./escalation-item";
 
+// Without this, Next.js statically renders this page once at build time —
+// it would freeze whatever Firestore returned during `npm run build` (in
+// this case, an index-error empty list) and serve that stale snapshot for
+// every request afterward, regardless of new escalations.
+export const dynamic = "force-dynamic";
+
 async function getOpenEscalations(): Promise<EscalationItemData[]> {
   if (!isFirebaseConfigured()) return [];
 

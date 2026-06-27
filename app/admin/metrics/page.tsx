@@ -1,6 +1,10 @@
 import { getPilotMetrics } from "@/lib/metrics";
 import { isFirebaseConfigured } from "@/lib/firebase";
 
+// Same static-rendering pitfall as /staff/escalations — metrics must be
+// queried fresh on every request, not frozen at build time.
+export const dynamic = "force-dynamic";
+
 export default async function MetricsPage() {
   const { metrics, clusters } = await getPilotMetrics();
   const firebaseConfigured = isFirebaseConfigured();
