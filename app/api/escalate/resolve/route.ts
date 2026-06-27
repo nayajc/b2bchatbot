@@ -8,23 +8,22 @@ import { getDb, isFirebaseConfigured } from "@/lib/firebase";
  * rate climb week over week (AC6) — without it, KB improvement is manual
  * and undocumented.
  *
+ * `question` and `unansweredLogId` are read from the escalation doc itself
+ * (stored at creation time in /api/escalate) rather than trusted from the
+ * client — the staff UI only needs to send escalationId + staffAnswer.
+ *
  * Drafts must be reviewed/published (status -> 'published') before the
- * Retriever snapshot picks them up (re-run `npm run ingest`, or a future
- * publish step re-embeds and re-snapshots automatically).
+ * Retriever picks them up (re-run `npm run ingest` for local dev, or
+ * publish + re-embed directly into kb_chunks for the Firestore-backed path).
  */
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
-  const escalationId = body?.escalationId;
-  const unansweredLogId = body?.unansweredLogId;
-  const question = body?.question;
-  const staffAnswer = body?.staffAnswer;
+  const escalationId = typeof body?.escalationId === "string" ? body.escalationId : null;
+  const staffAnswer = typeof body?.staffAnswer === "string" ? body.staffAnswer.trim() : "";
   const staffId = body?.staffId ?? null;
 
-  if (!escalationId || !question || !staffAnswer) {
-    return NextResponse.json(
-      { error: "escalationId, question, and staffAnswer are required" },
-      { status: 400 }
-    );
+  if (!escalationId || !staffAnswer) {
+    return NextResponse.json({ error: "escalationId and staffAnswer are required" }, { status: 400 });
   }
 
   if (!isFirebaseConfigured()) {
@@ -35,6 +34,21 @@ export async function POST(req: NextRequest) {
   }
 
   const db = getDb();
+
+  const escalationSnap = await db.collection("escalations").doc(escalationId).get();
+  if (!escalationSnap.exists) {
+    return NextResponse.json({ error: "Escalation not found" }, { status: 404 });
+  }
+  const escalation = escalationSnap.data() as { question?: string; unanswered_log_id?: string | null };
+  const question = escalation.question;
+  const unansweredLogId = escalation.unanswered_log_id ?? null;
+
+  if (!question) {
+    return NextResponse.json(
+      { error: "Escalation has no stored question — cannot create a draft kb_item" },
+      { status: 400 }
+    );
+  }
 
   let draftItemId: string;
   try {

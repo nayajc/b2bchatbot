@@ -44,10 +44,17 @@ export function decideRoute(question: string, retrieval: RetrievalResult): Routi
 
 /**
  * Writes the observability record (P4) that the escalation return-path
- * (Architect #4, Phase 3) later resolves into a draft kb_item.
+ * (Architect #4, Phase 3) later resolves into a draft kb_item. Returns the
+ * created doc's id so the caller can thread it through to the escalation
+ * record — without this id, /api/escalate/resolve has no row to link the
+ * eventual draft kb_item back to, and the return-path loop never closes.
  */
-export async function logUnanswered(question: string, topScore: number, route: AnswerRoute): Promise<void> {
-  if (route === "answered") return; // only log gaps, not successful automations
+export async function logUnanswered(
+  question: string,
+  topScore: number,
+  route: AnswerRoute
+): Promise<string | null> {
+  if (route === "answered") return null; // only log gaps, not successful automations
 
   if (!isFirebaseConfigured()) {
     console.warn("[unanswered_logs] Firebase not configured — skipping persistence:", {
@@ -55,19 +62,21 @@ export async function logUnanswered(question: string, topScore: number, route: A
       topScore,
       route,
     });
-    return;
+    return null;
   }
 
   try {
     const db = getDb();
-    await db.collection("unanswered_logs").add({
+    const ref = await db.collection("unanswered_logs").add({
       question,
       top_score: topScore,
       route,
       kb_item_id: null,
       created_at: new Date().toISOString(),
     });
+    return ref.id;
   } catch (err) {
     console.error("[unanswered_logs] insert failed:", (err as Error).message);
+    return null;
   }
 }

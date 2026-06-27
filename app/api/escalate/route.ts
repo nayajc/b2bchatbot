@@ -7,6 +7,7 @@ export async function POST(req: NextRequest) {
   const conversationId = body?.conversationId;
   const question = body?.question;
   const reason = body?.reason ?? "Assistant could not answer confidently.";
+  const unansweredLogId = typeof body?.unansweredLogId === "string" ? body.unansweredLogId : null;
 
   if (!conversationId || !question) {
     return NextResponse.json({ error: "conversationId and question are required" }, { status: 400 });
@@ -19,10 +20,12 @@ export async function POST(req: NextRequest) {
       const db = getDb();
       const ref = await db.collection("escalations").add({
         conversation_id: conversationId,
+        question,
         reason,
         status: "open",
         assigned_staff_id: null,
         resolved_answer_text: null,
+        unanswered_log_id: unansweredLogId,
         created_at: new Date().toISOString(),
       });
       escalationId = ref.id;
@@ -34,7 +37,7 @@ export async function POST(req: NextRequest) {
     console.warn("[api/escalate] Firebase not configured — escalation not persisted.");
   }
 
-  await notifyStaff({ conversationId, question, reason });
+  await notifyStaff({ conversationId, question, reason, escalationId });
 
   return NextResponse.json({ escalationId, status: "open" });
 }

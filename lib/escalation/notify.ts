@@ -7,6 +7,16 @@ export interface EscalationNotification {
   conversationId: string;
   question: string;
   reason: string;
+  escalationId: string | null;
+}
+
+function getAppUrl(): string {
+  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL;
+  // Vercel sets VERCEL_URL automatically (no protocol, deployment-specific) —
+  // useful as a fallback so preview deploys still produce a working link
+  // even without NEXT_PUBLIC_APP_URL configured.
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:3000";
 }
 
 export async function notifyStaff(notification: EscalationNotification): Promise<void> {
@@ -22,6 +32,10 @@ export async function notifyStaff(notification: EscalationNotification): Promise
     return;
   }
 
+  const replyLink = notification.escalationId
+    ? `${getAppUrl()}/staff/escalations#${notification.escalationId}`
+    : `${getAppUrl()}/staff/escalations`;
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -32,7 +46,7 @@ export async function notifyStaff(notification: EscalationNotification): Promise
       from: `B2B FAQ Bot <${fromAddress}>`,
       to: [staffEmail],
       subject: `[Escalation] New question needs your reply — conversation ${notification.conversationId}`,
-      text: `A travel agency asked a question our assistant could not answer confidently.\n\nQuestion: ${notification.question}\nReason: ${notification.reason}\nConversation: ${notification.conversationId}\n\nReply via the staff escalations page to also draft a KB entry from your answer.`,
+      text: `A travel agency asked a question our assistant could not answer confidently.\n\nQuestion: ${notification.question}\nReason: ${notification.reason}\nConversation: ${notification.conversationId}\n\nAnswer it here: ${replyLink}\n\nYour answer becomes a draft KB entry, so the same question gets auto-answered next time.`,
     }),
   });
 

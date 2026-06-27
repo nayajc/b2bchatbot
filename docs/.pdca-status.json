@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-06-27T14:35:49.098Z",
+  "lastUpdated": "2026-06-27T14:55:14.765Z",
   "activeFeatures": [
     "b2b-chat-bot",
     "ingest",
@@ -68,9 +68,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-06-27T06:16:53.975Z",
-        "lastUpdated": "2026-06-27T14:35:49.098Z"
+        "lastUpdated": "2026-06-27T14:53:17.347Z"
       },
-      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/rag/retriever.ts"
+      "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/rag/answer.ts"
     },
     "chat": {
       "phase": "do",
@@ -81,7 +81,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-06-27T06:17:52.702Z",
-        "lastUpdated": "2026-06-27T12:15:50.843Z"
+        "lastUpdated": "2026-06-27T14:53:28.754Z"
       },
       "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/api/chat/route.ts"
     },
@@ -94,7 +94,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-06-27T06:19:30.699Z",
-        "lastUpdated": "2026-06-27T11:56:06.082Z"
+        "lastUpdated": "2026-06-27T14:54:01.834Z"
       },
       "lastFile": "/Users/jcsong/codework/b2b-chat-bot/lib/escalation/notify.ts"
     },
@@ -107,7 +107,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-06-27T06:19:37.994Z",
-        "lastUpdated": "2026-06-27T06:30:34.133Z"
+        "lastUpdated": "2026-06-27T14:53:38.175Z"
       },
       "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/api/escalate/route.ts"
     },
@@ -120,7 +120,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-06-27T06:19:51.941Z",
-        "lastUpdated": "2026-06-27T06:30:45.110Z"
+        "lastUpdated": "2026-06-27T14:54:42.464Z"
       },
       "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/api/escalate/resolve/route.ts"
     },
@@ -133,7 +133,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-06-27T06:20:02.952Z",
-        "lastUpdated": "2026-06-27T06:30:56.358Z"
+        "lastUpdated": "2026-06-27T14:55:14.765Z"
       },
       "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/staff/escalations/page.tsx"
     },
@@ -159,7 +159,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-06-27T06:20:22.133Z",
-        "lastUpdated": "2026-06-27T12:16:17.149Z"
+        "lastUpdated": "2026-06-27T14:54:19.673Z"
       },
       "lastFile": "/Users/jcsong/codework/b2b-chat-bot/app/widget/widget-chat.tsx"
     },
@@ -224,7 +224,7 @@
   "session": {
     "startedAt": "2026-06-27T05:40:00.010Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-06-27T14:35:49.098Z"
+    "lastActivity": "2026-06-27T14:55:14.765Z"
   },
   "history": [
     {
@@ -614,6 +614,78 @@
     {
       "timestamp": "2026-06-27T14:35:49.098Z",
       "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:52:51.194Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:53:02.589Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:53:11.147Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:53:17.347Z",
+      "feature": "rag",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:53:28.754Z",
+      "feature": "chat",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:53:38.175Z",
+      "feature": "escalate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:53:52.201Z",
+      "feature": "escalation",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:54:01.834Z",
+      "feature": "escalation",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:54:19.673Z",
+      "feature": "widget",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:54:42.464Z",
+      "feature": "resolve",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:55:02.928Z",
+      "feature": "escalations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-06-27T14:55:14.765Z",
+      "feature": "escalations",
       "phase": "do",
       "action": "updated"
     }

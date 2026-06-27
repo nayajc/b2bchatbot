@@ -75,6 +75,7 @@ export default function WidgetChat() {
             conversationId: data.conversationId,
             question,
             reason: data.route === "human_routed" ? "Real-time inventory/booking question" : "Low KB coverage",
+            unansweredLogId: data.unansweredLogId,
           }),
         }).catch(() => {
           /* best-effort — staff page + unanswered_logs still surface the gap */

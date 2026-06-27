@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
       topScore: result.topScore,
       threshold: result.threshold,
       conversationId: newConversationId,
+      unansweredLogId: result.unansweredLogId,
     });
   } catch (err) {
     console.error("[api/chat] failed:", err);

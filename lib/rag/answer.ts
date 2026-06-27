@@ -11,6 +11,7 @@ export interface ChatAnswer {
   citedChunks: RetrievedChunk[];
   topScore: number;
   threshold: number;
+  unansweredLogId: string | null;
 }
 
 const ESCALATION_MESSAGE: Record<Language, string> = {
@@ -49,7 +50,7 @@ export async function answerQuestion(question: string, language: Language = "en"
   const decision = decideRoute(question, retrieval);
   const threshold = getSimilarityThreshold();
 
-  await logUnanswered(question, retrieval.topScore, decision.route);
+  const unansweredLogId = await logUnanswered(question, retrieval.topScore, decision.route);
 
   if (decision.route === "human_routed") {
     return {
@@ -58,6 +59,7 @@ export async function answerQuestion(question: string, language: Language = "en"
       citedChunks: [],
       topScore: retrieval.topScore,
       threshold,
+      unansweredLogId,
     };
   }
 
@@ -68,6 +70,7 @@ export async function answerQuestion(question: string, language: Language = "en"
       citedChunks: [],
       topScore: retrieval.topScore,
       threshold,
+      unansweredLogId,
     };
   }
 
@@ -94,5 +97,6 @@ export async function answerQuestion(question: string, language: Language = "en"
     citedChunks: retrieval.chunks,
     topScore: retrieval.topScore,
     threshold,
+    unansweredLogId,
   };
 }

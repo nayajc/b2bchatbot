@@ -1,14 +1,7 @@
 import { getDb, isFirebaseConfigured } from "@/lib/firebase";
+import EscalationItem, { type EscalationItemData } from "./escalation-item";
 
-interface EscalationRow {
-  id: string;
-  reason: string;
-  status: string;
-  created_at: string;
-  conversation_id: string;
-}
-
-async function getOpenEscalations(): Promise<EscalationRow[]> {
+async function getOpenEscalations(): Promise<EscalationItemData[]> {
   if (!isFirebaseConfigured()) return [];
 
   try {
@@ -19,7 +12,10 @@ async function getOpenEscalations(): Promise<EscalationRow[]> {
       .orderBy("status")
       .orderBy("created_at", "desc")
       .get();
-    return snapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as Omit<EscalationRow, "id">) }));
+    return snapshot.docs.map((doc) => {
+      const data = doc.data() as Omit<EscalationItemData, "id" | "question"> & { question?: string };
+      return { id: doc.id, question: data.question || "(question not recorded)", ...data };
+    });
   } catch (err) {
     console.error("[staff/escalations] query failed:", (err as Error).message);
     return [];
@@ -34,8 +30,8 @@ export default async function StaffEscalationsPage() {
     <main className="max-w-3xl mx-auto p-8">
       <h1 className="text-xl font-semibold">Open Escalations</h1>
       <p className="mt-1 text-sm text-gray-600">
-        Resolving an escalation via <code>POST /api/escalate/resolve</code> creates a draft KB
-        item linked back to the question that exposed the gap.
+        Answer below — your reply creates a draft KB item linked back to the question that
+        exposed the gap, so the assistant can answer it automatically next time once published.
       </p>
 
       {!firebaseConfigured && (
@@ -48,15 +44,7 @@ export default async function StaffEscalationsPage() {
 
       <ul className="mt-6 divide-y divide-gray-200">
         {escalations.map((e) => (
-          <li key={e.id} className="py-4">
-            <div className="flex items-center justify-between">
-              <span className="font-medium">{e.reason}</span>
-              <span className="text-xs uppercase tracking-wide text-gray-500">{e.status}</span>
-            </div>
-            <div className="text-xs text-gray-500 mt-1">
-              Conversation {e.conversation_id} · {new Date(e.created_at).toLocaleString()}
-            </div>
-          </li>
+          <EscalationItem key={e.id} escalation={e} />
         ))}
         {escalations.length === 0 && firebaseConfigured && (
           <li className="py-4 text-sm text-gray-500">No open escalations.</li>
